@@ -16,7 +16,7 @@ else
   
   $svc = new \Etsy\ListingSuggestionService();
   
-  $connection = new \PDO('mysql:host=localhost;dbname=taesty', 'root', 'root');
+  $connection = new \PDO('mysql:host=localhost;dbname=taesty', $db_user, $db_password);
   $svc->setDatabaseHandle($connection);
   
   try
