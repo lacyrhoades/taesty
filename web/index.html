@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Taesty &mdash; Favorite items of any Etsy user</title>
+    
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.tmpl.js"></script>
+    <script type="text/javascript" src="js/jquery.vgrid.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    
+    <style type="text/css">
+      div.suggested-listings li {
+        overflow: hidden;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <script id="listingTemplate" type="text/x-jquery-tmpl">
+      <li><a href="${url}"><img src="${main_image_src_75x75}" alt="${title}" /></a></li>
+    </script>
+    
+    <div>
+      
+      <div class="main-form">
+        <h1>Taesty</h1>
+        <p>Please enter a Etsy username below.</p>
+        <form onSubmit="return false;">
+          <input type="text" class="username" value="christopherjee"/>
+          <input type="submit" value="Go!">
+        </form>
+      </div>
+      
+      <div class="suggested-listings">
+        <ul></ul>
+      </div>
+      
+      <div class="status">
+        <h3>Status:</h3>
+        <ul></ul>
+      </div>
+      
+    </div>
+  </body>
+</html>
