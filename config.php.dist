@@ -2,3 +2,6 @@
 
 $db_user = 'root';
 $db_password = 'root';
+
+$etsy_api_key = 'keygoeshere';
+$etsy_api_base_url = 'http://openapi.etsy.com/v2/sandbox';

@@ -6,11 +6,20 @@ use \Etsy\ShopListingsActive as ShopListingsActive;
 
 class ListingSuggestionService
 {
+  protected $base_url = null;
+  protected $api_key = null;
+  
+  public function __construct($base_url, $api_key)
+  {
+    $this->base_url = $base_url;
+    $this->api_key = $api_key;
+  }
+  
   public function fetchSuggestedShopsForUsername($username)
   {
     $config = array(
-      'api_key'=>'b66j5zvfu3fg228k8mudecpn',
-      'base_url'=>'http://openapi.etsy.com/v2/sandbox',
+      'api_key'=>$this->api_key,
+      'base_url'=>$this->base_url,
       'user_id'=>$username,
       'database_handle'=>$this->getDatabaseHandle());
 
@@ -32,8 +41,8 @@ class ListingSuggestionService
   public function fetchActiveListingsForShop($shop_id)
   {
     $config = array(
-      'api_key'=>'b66j5zvfu3fg228k8mudecpn',
-      'base_url'=>'http://openapi.etsy.com/v2/sandbox',
+      'api_key'=>$this->api_key,
+      'base_url'=>$this->base_url,
       'shop_id'=>$shop_id,
       'database_handle'=>$this->getDatabaseHandle());
 

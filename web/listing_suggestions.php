@@ -14,7 +14,7 @@ else
 {
   $result['shop_id'] = $shop_id;
   
-  $svc = new \Etsy\ListingSuggestionService();
+  $svc = new \Etsy\ListingSuggestionService($etsy_api_base_url, $etsy_api_key);
   
   $connection = new \PDO('mysql:host=localhost;dbname=taesty', $db_user, $db_password);
   $svc->setDatabaseHandle($connection);
