@@ -16,6 +16,9 @@ else
   
   $svc = new \Etsy\ListingSuggestionService();
   
+  $connection = new \PDO('mysql:host=localhost;dbname=taesty', 'root', 'root');
+  $svc->setDatabaseHandle($connection);
+  
   try
   {
     $shops = $svc->fetchSuggestedShopsForUsername($username);

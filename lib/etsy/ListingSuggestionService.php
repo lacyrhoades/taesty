@@ -56,10 +56,15 @@ class ListingSuggestionService
     return $results;
   }
   
-  protected function getDatabaseHandle()
+  protected $database = null;
+  
+  public function setDatabaseHandle($handle)
   {
-    $connection = new \PDO('mysql:host=localhost;dbname=taesty', 'root', 'root');
-    
-    return $connection;
+    $this->database = $handle;
+  }
+  
+  public function getDatabaseHandle()
+  {
+    return $this->database;
   }
 }
