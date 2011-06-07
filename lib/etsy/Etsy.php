@@ -63,17 +63,17 @@ abstract class Etsy
       return $data;
     }
     
-    $ch = curl_init(); 
-    curl_setopt($ch, CURLOPT_URL, $url); 
-    curl_setopt($ch, CURLOPT_HEADER, 0); 
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-    $data = curl_exec($ch);
-    $status = intval(curl_getinfo($ch, CURLINFO_HTTP_CODE));
+    $ch = \curl_init(); 
+    \curl_setopt($ch, CURLOPT_URL, $url); 
+    \curl_setopt($ch, CURLOPT_HEADER, 0); 
+    \curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+    $data = \curl_exec($ch);
+    $status = \intval(curl_getinfo($ch, CURLINFO_HTTP_CODE));
     if ($status != 200)
     {
-      throw new \Exception(sprintf('Error in request to api, HTTP Status: %s for URL: %s', $status, $url));
+      throw new \Exception(\sprintf('Error in request to api, HTTP Status: %s for URL: %s', $status, $url));
     }
-    curl_close($ch);
+    \curl_close($ch);
     
     $this->storeCachedResult($url, $data);
     
@@ -84,9 +84,9 @@ abstract class Etsy
   {
     $base_url = $this->base_url;
     $relative_url = $this->getRelativeApiUrl();
-    $parameters = http_build_query($this->getApiParameters());
+    $parameters = \http_build_query($this->getApiParameters());
 
-    $full_url =  sprintf('%s/public%s?%s', $base_url, $relative_url, $parameters);
+    $full_url =  \sprintf('%s/public%s?%s', $base_url, $relative_url, $parameters);
 
     return $full_url;
   }
@@ -137,7 +137,7 @@ abstract class Etsy
     
     $connection = $this->getDatabaseHandle();
     
-    $sql = sprintf('SELECT * FROM url_cache c WHERE c.url LIKE ?');
+    $sql = \sprintf('SELECT * FROM url_cache c WHERE c.url LIKE ?');
     
     $statement = $connection->prepare($sql);
     
@@ -165,7 +165,7 @@ abstract class Etsy
     
     $connection = $this->getDatabaseHandle();
     
-    $sql = sprintf('INSERT INTO url_cache (url, response, created_at) VALUES (?, ?, now())');
+    $sql = \sprintf('INSERT INTO url_cache (url, response, created_at) VALUES (?, ?, now())');
     
     $statement = $connection->prepare($sql);
     
